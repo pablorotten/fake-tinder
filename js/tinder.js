@@ -1,44 +1,33 @@
-
-// Tinder
-
 let imgCount = 0
 const appLink = 'pablorotten.github.io/fake-tinder'
-const profiles = [
-  {img: `images/profiles/calamardo.jpeg`, name: 'Squid', age: '45', distance: '6'},
-  {img: `images/profiles/amongus-border1.gif`, name: 'Suspisus', age: '19', distance: '12'},
-  {img: `images/profiles/gigachad.jpeg`, name: 'Chad', age: '30', distance: '13'},
-  {img: `images/profiles/alo.jpeg`, name: 'Fernanlove', age: '40', distance: '11'},
-  {img: `images/profiles/m&m.png`, name: 'Miss M&M', age: '23', distance: '5'},
-  {img: `images/profiles/broly.png`, name: 'Broly', age: '31', distance: '13'},
-  {img: `images/profiles/piggy.png`, name: 'Piggy', age: '39', distance: '51'},
-  {img: `images/profiles/vegeta.png`, name: 'Vegeta', age: '44', distance: '21'},
-  {img: `images/profiles/werewolf.png`, name: 'Lobo', age: '18', distance: '1'},
-  {img: `images/profiles/qr.png`, name: 'link'},
-]
-
 const frame = document.body.querySelector('.frame')
+let profiles = []
 
-profiles.forEach(profile => appendCard(profile))
+fetch('js/profiles.json')
+  .then(response => response.json())
+  .then(data => {
+    profiles = data
+    profiles.forEach(profile => appendCard(profile))
+    let current = frame.querySelector('.card:last-child')
+    let likeText = current.children[0]
+    let startX = 0, startY = 0, moveX = 0, moveY = 0
+    initCard(current)
 
-let current = frame.querySelector('.card:last-child')
-let likeText = current.children[0]
-let startX = 0, startY = 0, moveX = 0, moveY = 0
-initCard(current)
-
-document.querySelector('#like').onclick = () => {
-  moveX = 1
-  moveY = 0
-  complete()
-}
-document.querySelector('#hate').onclick = () => {
-  moveX = -1
-  moveY = 0
-  complete()
-}
-document.querySelector('#link').onclick = () => {
-  $.notify("Link copied in the clipboard", "success");
-  navigator.clipboard.writeText(`https://${appLink}`);
-}
+    document.querySelector('#like').onclick = () => {
+      moveX = 1
+      moveY = 0
+      complete()
+    }
+    document.querySelector('#hate').onclick = () => {
+      moveX = -1
+      moveY = 0
+      complete()
+    }
+    document.querySelector('#link').onclick = () => {
+      $.notify("Link copied in the clipboard", "success");
+      navigator.clipboard.writeText(`https://${appLink}`);
+    }
+  })
 
 function appendCard(profile) {
   const firstCard = frame.children[0]
@@ -103,9 +92,11 @@ function complete() {
 
   const prev = current
   const next = current.previousElementSibling
-  if (next) initCard(next)
-  current = next
-  likeText = current.children[0]
+  if (next) {
+    initCard(next)
+    current = next
+    likeText = current.children[0]
+  }
   appendCard(profiles[imgCount % profiles.length])
   setTimeout(() => frame.removeChild(prev), innerWidth)
 }
