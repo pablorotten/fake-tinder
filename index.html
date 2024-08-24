@@ -1,9 +1,11 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width,height=device-height,initial-scale=1" name="viewport">
   <meta content="Tinder." name="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Tinder</title>
   <link href="images/logo.png" rel="icon" type="image/png">
   <link href="manifest.json" rel="manifest">
@@ -25,7 +27,18 @@
     <path
       d="M96,56.53c.08,7.92-2.41,12.68-6.59,16.56C82,80,74.36,86.7,66.93,93.58c-2.23,2.06-3.93,1.71-6-.21-7.55-7-15.27-13.84-22.77-20.89-6.46-6.07-7.93-15.23-4-23.34,3.8-8,10-11.17,19.11-10.25,3.39.35,5.91,2.16,8.25,4.24,1.77,1.58,2.95,2.07,4.93.17,5.7-5.49,12.47-5.84,19.37-2.82C92.08,43.23,96,50.71,96,56.53Z"/>
   </svg>
-</div>
+  <!-- Modal HTML -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="profileForm">
+        <input type="file" id="profileImage" accept="image/*" required>
+        <input type="text" id="profileName" placeholder="Name" required>
+        <input type="number" id="profileAge" placeholder="Age" required>
+        <input type="number" id="profileDistance" placeholder="Distance" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/notify.js"></script>

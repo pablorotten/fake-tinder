@@ -1,3 +1,4 @@
+// js/tinder.js
 let imgCount = 0
 const appLink = 'pablorotten.github.io/fake-tinder'
 const frame = document.body.querySelector('.frame')
@@ -6,11 +7,14 @@ let current, likeText
 
 document.addEventListener('DOMContentLoaded', () => {
   const likeIcon = document.getElementById('like');
+  const modal = document.getElementById('myModal');
+  const span = document.getElementsByClassName('close')[0];
+  const form = document.getElementById('profileForm');
   let longPressTimer;
 
   likeIcon.addEventListener('pointerdown', () => {
     longPressTimer = setTimeout(() => {
-      alert('Long press detected on like icon');
+      modal.style.display = 'block';
     }, 500); // 500ms for long press
   });
 
@@ -21,6 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
   likeIcon.addEventListener('pointerleave', () => {
     clearTimeout(longPressTimer);
   });
+
+  span.onclick = () => {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    const img = URL.createObjectURL(document.getElementById('profileImage').files[0]);
+    const name = document.getElementById('profileName').value;
+    const age = document.getElementById('profileAge').value;
+    const distance = document.getElementById('profileDistance').value;
+
+    const newProfile = { img, name, age, distance };
+    profiles.unshift(newProfile);
+    appendCard(newProfile);
+    modal.style.display = 'none';
+  }
 });
 
 fetch('js/profiles.json')
