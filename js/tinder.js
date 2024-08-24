@@ -2,15 +2,15 @@ let imgCount = 0
 const appLink = 'pablorotten.github.io/fake-tinder'
 const frame = document.body.querySelector('.frame')
 let profiles = []
+let current, likeText
 
 fetch('js/profiles.json')
   .then(response => response.json())
   .then(data => {
     profiles = data
     profiles.forEach(profile => appendCard(profile))
-    let current = frame.querySelector('.card:last-child')
-    let likeText = current.children[0]
-    let startX = 0, startY = 0, moveX = 0, moveY = 0
+    current = frame.querySelector('.card:last-child')
+    likeText = current.children[0]
     initCard(current)
 
     document.querySelector('#like').onclick = () => {
