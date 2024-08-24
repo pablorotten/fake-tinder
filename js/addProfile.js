@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('like2').addEventListener('click', () => {
+  document.getElementById('addProfileBtn').addEventListener('click', () => {
     const form = document.getElementById('addProfileForm');
     if (form.style.display === 'block') {
       form.style.display = 'none';

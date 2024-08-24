@@ -4,7 +4,7 @@
 		1) cacheAll = true 		=> Cache all requests in urlsToCache list and all further requests
 		2) cacheAll = false 	=> Cache only all requests in urlsToCache list
 */
-const version = "1.9.1"
+const version = "1.9"
 let cacheAll = false;
 var CACHE_NAME = 'fake-tinder-cache';
 var urlsToCache = [
