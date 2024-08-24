@@ -4,6 +4,25 @@ const frame = document.body.querySelector('.frame')
 let profiles = []
 let current, likeText
 
+document.addEventListener('DOMContentLoaded', () => {
+  const likeIcon = document.getElementById('like');
+  let longPressTimer;
+
+  likeIcon.addEventListener('pointerdown', () => {
+    longPressTimer = setTimeout(() => {
+      alert('Long press detected on like icon');
+    }, 500); // 500ms for long press
+  });
+
+  likeIcon.addEventListener('pointerup', () => {
+    clearTimeout(longPressTimer);
+  });
+
+  likeIcon.addEventListener('pointerleave', () => {
+    clearTimeout(longPressTimer);
+  });
+});
+
 fetch('js/profiles.json')
   .then(response => response.json())
   .then(data => {

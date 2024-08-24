@@ -28,3 +28,10 @@ Android:
 Now you have your **fake** Tinder app on your home screen:
 ![app installed](images/result.jpeg)
 
+## Debugging
+
+To debug with live reload in external devices:
+``sh
+npm install -g browser-sync
+browser-sync start --server --files "index.html, css/*.css, js/*.js" --port 8080
+``
