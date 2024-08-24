@@ -214,22 +214,53 @@ html, body {
   background-color: rgba(0,0,0,0.4);
   padding-top: 60px;
 }
+
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 5px;
+  padding: 20px;
+  opacity: 0.85;
+  color: black;
 }
+
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Style inputs, select elements and textareas */
+input[type=text], input[type=number], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+.col-75 {
+  width: 100%;
+  margin-top: 6px;
 }
