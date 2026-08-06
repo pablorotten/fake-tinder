@@ -4,6 +4,26 @@ body {
   color: white;
 }
 
+.disclaimer-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  border-bottom: 2px solid #ffc107;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.disclaimer-banner strong {
+  font-weight: 700;
+}
+
 h1 {
   margin-top: 40vh;
 }
